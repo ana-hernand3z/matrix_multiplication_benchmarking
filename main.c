@@ -9,15 +9,10 @@ int main(int argc, char *argv[]) {
         printf("Expected arguments");
         return -1;
     }
-    char max = *argv[1];
-    if(!isdigit(max)){
-        printf("Expected number argument");
-        return -1;
-    }
+    int  max = atoi(argv[1]);
     
-    int size = (int) max;
-    run_test("i_j_k.csv", i_j_k_matrix, 0, size);
-    run_test("j_k_i.csv", j_k_i_matrix, 0, size);
-    run_test("k_i_j.csv", k_i_j_matrix, 0, size);
+    run_test("i_j_k.csv", i_j_k_matrix, 0, max);
+    run_test("j_k_i.csv", j_k_i_matrix, 0, max);
+    run_test("k_i_j.csv", k_i_j_matrix, 0, max);
 
 }
