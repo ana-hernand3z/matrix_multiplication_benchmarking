@@ -36,5 +36,7 @@ void run_test(char* name, multiplication_function f, int start, int end){
         loading_bar[i] = b;
         printf("\r%s", loading_bar);
     }
+    printf("\n");
     fclose(t);
+    free(loading_bar);
 }
