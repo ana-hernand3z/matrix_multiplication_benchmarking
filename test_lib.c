@@ -1,4 +1,5 @@
 #include "test_lib.h"
+#include <string.h>
 
 matrix* init_matrix(int n){
     matrix *A = create_matrix(n);
@@ -19,30 +20,29 @@ char* test(multiplication_function f, int n){
 
 void run_test(char* name, multiplication_function f, int start, int end){
     FILE *t = fopen(name, "w");
+    int loading_bar_size = 100;
     if(!t){
         printf("(-) Could not open file\n");
         return;
     }
-    char *loading_bar = malloc(100+1);
+    char *loading_bar = malloc(loading_bar_size + 1);
     char a = '-',  b = '=';
 
     printf("Creating %s\n", name);
-    int j = 0;
-    for(; j < 100; j++){
-	    loading_bar[j] = a;
-    }
-    loading_bar[j] = '\0';
+    memset(loading_bar, a, loading_bar_size);
+    loading_bar[loading_bar_size] = '\0';
 
     printf("\r0.00\%\t%s", loading_bar);
 
     float  progress = 0;
     for(int i = start; i < end; i++){
-	loading_bar[(int)progress] = b;
+	loading_bar[(int)(progress * loading_bar_size)] = b;
         fprintf(t, "%s", test(f, i));
-	    progress = ((double)(i+1.0)*100.)/(double)end;
-        printf("\r%.2f\%\t%s", progress, loading_bar);
+	progress = ((double)(i+1.0))/(double)end;
+        printf("\r%.2f\%\t%s", progress * 100., loading_bar);
+	fflush(stdout);
     }
-    printf("\n");
+    puts("");
     fclose(t);
     free(loading_bar);
 }
