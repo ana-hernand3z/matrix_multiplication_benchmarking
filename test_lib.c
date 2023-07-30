@@ -23,20 +23,24 @@ void run_test(char* name, multiplication_function f, int start, int end){
         printf("(-) Could not open file\n");
         return;
     }
-    char *loading_bar = malloc((100)*sizeof(char));
+    char *loading_bar = malloc(100+1);
     char a = '-',  b = '=';
 
     printf("Creating %s\n", name);
-    for(int j = 0; j < 100; j++){
-	    loading_bar[j] =a;
-	    printf("\r0.00\%\t\t%s", loading_bar);
+    int j = 0;
+    for(; j < 100; j++){
+	    loading_bar[j] = a;
     }
+    loading_bar[j] = '\0';
+
+    printf("\r0.00\%\t%s", loading_bar);
+
     float  progress = 0;
     for(int i = start; i < end; i++){
 	loading_bar[(int)progress] = b;
         fprintf(t, "%s", test(f, i));
-	progress = ((double)(i+1.0)*100.)/(double)end;
-        printf("\r%.2f\%\t\t%s", progress, loading_bar);
+	    progress = ((double)(i+1.0)*100.)/(double)end;
+        printf("\r%.2f\%\t%s", progress, loading_bar);
     }
     printf("\n");
     fclose(t);
