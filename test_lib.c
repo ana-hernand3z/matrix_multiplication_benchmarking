@@ -23,7 +23,7 @@ void run_test(char* name, multiplication_function f, int start, int end){
         printf("(-) Could not open file\n");
         return;
     }
-    char *loading_bar = malloc((end-start)*sizeof(char));
+    char *loading_bar = malloc((100)*sizeof(char));
     char a = '-',  b = '=';
 
     printf("Creating %s\n", name);
