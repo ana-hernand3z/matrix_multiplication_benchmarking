@@ -40,7 +40,7 @@ void run_test(char* name, multiplication_function f, int start, int end){
 	loading_bar[(int)(progress * loading_bar_size)] = b;
         fprintf(t, "%s", test(f, i));
 	progress = ((double)(i+1.0))/(double)end;
-        printf("\033[1;31m\r%.2f\%\t%s\033[0m", progress * 100., loading_bar);
+        printf("\033[1;32m\r%.2f\%\t%s\033[0m", progress * 100., loading_bar);
 	fflush(stdout);
     }
     puts("");
