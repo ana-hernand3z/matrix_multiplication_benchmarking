@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
     }
     int  max = atoi(argv[1]);
     
-    run_test("i_j_k.csv", i_j_k_matrix, 0, max);
-    run_test("j_k_i.csv", j_k_i_matrix, 0, max);
-    run_test("k_i_j.csv", k_i_j_matrix, 0, max);
+    run_test("i_j_k.csv", i_j_k_matrix, 1, max);
+    run_test("j_k_i.csv", j_k_i_matrix, 1, max);
+    run_test("k_i_j.csv", k_i_j_matrix, 1, max);
 
 }
