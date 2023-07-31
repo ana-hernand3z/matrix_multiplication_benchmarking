@@ -10,9 +10,9 @@ matrix* init_matrix(int n){
 char* test(multiplication_function f, int n){
     matrix *A = init_matrix(n);
     matrix *C = create_matrix(n);
-    float timing = time_function(f, A, A, C, n);
+    double timing = time_function(f, A, A, C, n);
     char* ret = malloc(256);
-    snprintf(ret, 256, "%d, %f\n", n, timing/((float)n*n*n));
+    snprintf(ret, 256, "%d, %f\n", n, timing/((double)n*n*n));
 
     free_matrix(A, n);
     free_matrix(C, n);
@@ -35,7 +35,7 @@ void run_test(char* name, multiplication_function f, int start, int end){
 
     printf("\r0.00\%\t%s", loading_bar);
 
-    float  progress = 0;
+    float progress = 0;
     for(int i = start; i < end; i++){
 	loading_bar[(int)(progress * loading_bar_size)] = b;
         fprintf(t, "%s", test(f, i));

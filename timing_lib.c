@@ -5,5 +5,5 @@ float time_function(multiplication_function f, matrix *A, matrix *B, matrix *C, 
     t = clock();
     f(A, B, C, n);
     t = clock() - t;
-    return ((float)t);
+    return ((double)t); 
 }
