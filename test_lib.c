@@ -12,7 +12,7 @@ char* test(multiplication_function f, int n){
     matrix *C = create_matrix(n);
     double timing = time_function(f, A, A, C, n);
     char* ret = malloc(256);
-    snprintf(ret, 256, "%d, %f\n", n, timing/((double)n*n*n));
+    snprintf(ret, 256, "%d, %f\n", n, timing);
 
     free_matrix(A, n);
     free_matrix(C, n);

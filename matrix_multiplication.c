@@ -1,5 +1,10 @@
 #include "matrix_multiplication.h"
 
+int BLOCKSIZE = 20;
+
+void set_blocksize(int n){
+    BLOCKSIZE = n;
+}
 void i_j_k_matrix(matrix *A, matrix *B, matrix *C, int n){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
